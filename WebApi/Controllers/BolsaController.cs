@@ -13,7 +13,7 @@ using WebApi.Models;
 namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    [ApiController] 
     public class BolsaController : ControllerBase
     { 
         static int sCodErrorControllerAPi = 20190000;//-- CODIGO ERROR GENERAL PARA IDENTIFICAR EL ERROR EN LA CAPA LOGICA
