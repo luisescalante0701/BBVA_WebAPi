@@ -20,7 +20,7 @@ namespace WebApi.Controllers
 
         IConfiguration _myConfiguration;
         ConfigWeb ConfigWeb_;
-
+           
         public BolsaController(IConfiguration myConfiguration)
         {
             _myConfiguration = myConfiguration;
