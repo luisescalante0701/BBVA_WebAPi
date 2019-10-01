@@ -266,7 +266,70 @@ namespace WebApi.Controllers
         }
 
 
+        [HttpGet]
+        [Route("mSeleccionarCorreo")]
+        public object mSeleccionarCorreo()
+        {
+            object objResult = null;
 
+            Model modeloRpta = new Model();
+            Bolsa mBolsa = new Bolsa();
+
+            object obj = new object();
+
+            try
+            {
+                object objRpta = mBolsa.mSeleccionarCorreo(this.ConfigWeb_);
+                modeloRpta = (Model)objRpta;
+
+                objResult = modeloRpta;
+            }
+            catch (Exception ex)
+            {
+                modeloRpta.bEstado = false;
+                modeloRpta.iCodigo = sCodErrorControllerAPi;
+                modeloRpta.sRpta = String.Format("Class: {0} > StackTrace: {1} - Message: {2} ", "BolsaController", ex.StackTrace, ex.Message);// ex.Message.ToString();
+                modeloRpta.obj = obj;
+                objResult = modeloRpta;
+
+                // JsonConvert
+            }
+
+            return JsonConvert.SerializeObject(objResult);
+
+
+
+        [HttpGet]
+        [Route("mTraerCorreo")]
+        public object mTraerCorreo()
+        {
+            object objResult = null;
+
+            Model modeloRpta = new Model();
+            Bolsa mBolsa = new Bolsa();
+
+            object obj = new object();
+
+            try
+            {
+                object objRpta = mBolsa.mTraerCorreo(this.ConfigWeb_);
+                modeloRpta = (Model)objRpta;
+
+                objResult = modeloRpta;
+            }
+            catch (Exception ex)
+            {
+                modeloRpta.bEstado = false;
+                modeloRpta.iCodigo = sCodErrorControllerAPi;
+                modeloRpta.sRpta = String.Format("Class: {0} > StackTrace: {1} - Message: {2} ", "BolsaController", ex.StackTrace, ex.Message);// ex.Message.ToString();
+                modeloRpta.obj = obj;
+                objResult = modeloRpta;
+
+                // JsonConvert
+            }
+
+            return JsonConvert.SerializeObject(objResult);
+        }
 
 
 

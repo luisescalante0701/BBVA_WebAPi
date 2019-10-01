@@ -43,6 +43,16 @@ namespace WebApi.Models
             return new Logic_().mGetMoneda(ConfigWeb_);
         }
 
+        public Model mSeleccionarCorreo(ConfigWeb ConfigWeb_)
+        {
+            return new Logic_().mSeleccionarCorreo(ConfigWeb_);
+        }
+
+        public Model mTraerCorreo(ConfigWeb ConfigWeb_)
+        {
+            return new Logic_().mTraerCorreo(ConfigWeb_);
+        }
+
 
 
     }

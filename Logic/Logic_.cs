@@ -151,6 +151,45 @@ namespace Logic
             return modeloRpta;
         }
 
+        public Model mSeleccionarCorreo(ConfigWeb ConfigWeb_)
+        {
+            Model modeloRpta = new Model();
 
+            try
+            {
+                string sCMD = "EXEC [SAB_Correo_Seleccionar]";
+                modeloRpta = new Data_().mExceBD_SQL(ConfigWeb_, sCMD);
+            }
+            catch (Exception ex)
+            {
+                modeloRpta.bEstado = false;
+                modeloRpta.iCodigo = sCodErrorLogicAPi;
+                modeloRpta.sRpta = String.Format("Class: {0} > StackTrace: {1} - Message: {2} ", "Logic_", ex.StackTrace, ex.Message);
+                modeloRpta.obj = null;
+            }
+
+            return modeloRpta;
+        }
+
+
+        public Model mTraerCorreo(ConfigWeb ConfigWeb_)
+        {
+            Model modeloRpta = new Model();
+
+            try
+            {
+                string sCMD = "EXEC [SUA_Correo_Traer]";
+                modeloRpta = new Data_().mExceBD_SQL(ConfigWeb_, sCMD);
+            }
+            catch (Exception ex)
+            {
+                modeloRpta.bEstado = false;
+                modeloRpta.iCodigo = sCodErrorLogicAPi;
+                modeloRpta.sRpta = String.Format("Class: {0} > StackTrace: {1} - Message: {2} ", "Logic_", ex.StackTrace, ex.Message);
+                modeloRpta.obj = null;
+            }
+
+            return modeloRpta;
+        }
     }
 }
