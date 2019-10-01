@@ -171,7 +171,7 @@ namespace Logic
             return modeloRpta;
         }
 
-
+         
         public Model mTraerCorreo(ConfigWeb ConfigWeb_)
         {
             Model modeloRpta = new Model();
