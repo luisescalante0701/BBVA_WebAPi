@@ -40,7 +40,7 @@ namespace WebApi.Controllers
         }
 
 
-
+        #region MaestroDA
         [HttpGet]
         [Route("mGetCriterio")]
         public object mGetCriterio()
@@ -265,10 +265,9 @@ namespace WebApi.Controllers
             return JsonConvert.SerializeObject(objResult);
         }
 
-
         [HttpGet]
-        [Route("mSeleccionarCorreo")]
-        public object mSeleccionarCorreo()
+        [Route("mListarRutaCarpeta")]
+        public object mListarRutaCarpeta()
         {
             object objResult = null;
 
@@ -279,7 +278,7 @@ namespace WebApi.Controllers
 
             try
             {
-                object objRpta = mBolsa.mSeleccionarCorreo(this.ConfigWeb_);
+                object objRpta = mBolsa.mListarRutaCarpeta(this.ConfigWeb_);
                 modeloRpta = (Model)objRpta;
 
                 objResult = modeloRpta;
@@ -296,8 +295,332 @@ namespace WebApi.Controllers
             }
 
             return JsonConvert.SerializeObject(objResult);
+        }
 
+        [HttpGet]
+        [Route("mNombreTipoOrden/{strCodigo}")]
+        public object mNombreTipoOrden(string strCodigo)
+        {
+            object objResult = null;
 
+            Model modeloRpta = new Model();
+            Bolsa mBolsa = new Bolsa();
+
+            object obj = new object();
+
+            try
+            {
+                object objRpta = mBolsa.mNombreTipoOrden(this.ConfigWeb_, strCodigo);
+                modeloRpta = (Model)objRpta;
+
+                objResult = modeloRpta;
+            }
+            catch (Exception ex)
+            {
+                modeloRpta.bEstado = false;
+                modeloRpta.iCodigo = sCodErrorControllerAPi;
+                modeloRpta.sRpta = String.Format("Class: {0} > StackTrace: {1} - Message: {2} ", "BolsaController", ex.StackTrace, ex.Message);// ex.Message.ToString();
+                modeloRpta.obj = obj;
+                objResult = modeloRpta;
+
+                // JsonConvert
+            }
+
+            return JsonConvert.SerializeObject(objResult);
+        }
+
+        [HttpGet]
+        [Route("mDescripcionMoneda/{strCodigo}")]
+        public object mDescripcionMoneda(string strCodigo)
+        {
+            object objResult = null;
+
+            Model modeloRpta = new Model();
+            Bolsa mBolsa = new Bolsa();
+
+            object obj = new object();
+
+            try
+            {
+                object objRpta = mBolsa.mDescripcionMoneda(this.ConfigWeb_, strCodigo);
+                modeloRpta = (Model)objRpta;
+
+                objResult = modeloRpta;
+            }
+            catch (Exception ex)
+            {
+                modeloRpta.bEstado = false;
+                modeloRpta.iCodigo = sCodErrorControllerAPi;
+                modeloRpta.sRpta = String.Format("Class: {0} > StackTrace: {1} - Message: {2} ", "BolsaController", ex.StackTrace, ex.Message);// ex.Message.ToString();
+                modeloRpta.obj = obj;
+                objResult = modeloRpta;
+
+                // JsonConvert
+            }
+
+            return JsonConvert.SerializeObject(objResult);
+        }
+
+        [HttpGet]
+        [Route("mNombreTipoComision/{strCodigo}")]
+        public object mNombreTipoComision(string strCodigo)
+        {
+            object objResult = null;
+
+            Model modeloRpta = new Model();
+            Bolsa mBolsa = new Bolsa();
+
+            object obj = new object();
+
+            try
+            {
+                object objRpta = mBolsa.mNombreTipoComision(this.ConfigWeb_, strCodigo);
+                modeloRpta = (Model)objRpta;
+
+                objResult = modeloRpta;
+            }
+            catch (Exception ex)
+            {
+                modeloRpta.bEstado = false;
+                modeloRpta.iCodigo = sCodErrorControllerAPi;
+                modeloRpta.sRpta = String.Format("Class: {0} > StackTrace: {1} - Message: {2} ", "BolsaController", ex.StackTrace, ex.Message);// ex.Message.ToString();
+                modeloRpta.obj = obj;
+                objResult = modeloRpta;
+
+                // JsonConvert
+            }
+
+            return JsonConvert.SerializeObject(objResult);
+        }
+
+        [HttpGet]
+        [Route("mGuardarLogTrafico/{strTipo}/{strIp}/{strConError}/{strMensaje}")]
+        public object mGuardarLogTrafico(string strTipo, string strIp, string strConError, string strMensaje)
+        {
+            object objResult = null;
+
+            Model modeloRpta = new Model();
+            Bolsa mBolsa = new Bolsa();
+
+            object obj = new object();
+
+            try
+            {
+                object objRpta = mBolsa.mGuardarLogTrafico(this.ConfigWeb_, strTipo, strIp, strConError, strMensaje);
+                modeloRpta = (Model)objRpta;
+
+                objResult = modeloRpta;
+            }
+            catch (Exception ex)
+            {
+                modeloRpta.bEstado = false;
+                modeloRpta.iCodigo = sCodErrorControllerAPi;
+                modeloRpta.sRpta = String.Format("Class: {0} > StackTrace: {1} - Message: {2} ", "BolsaController", ex.StackTrace, ex.Message);// ex.Message.ToString();
+                modeloRpta.obj = obj;
+                objResult = modeloRpta;
+
+                // JsonConvert
+            }
+
+            return JsonConvert.SerializeObject(objResult);
+        }
+        #endregion
+
+        #region Nemonico
+        // POST: api/Bolsa
+        [HttpPost]
+        public object mListarN(string strNemotico, Nemonico Nemonico_)
+        {
+            object objResult = null;
+
+            Model modeloRpta = new Model();
+            Bolsa mBolsa = new Bolsa();
+
+            object obj = new object();
+
+            try
+            {
+                object objRpta = mBolsa.mListarN(this.ConfigWeb_, strNemotico, Nemonico_);
+                modeloRpta = (Model)objRpta;
+
+                objResult = modeloRpta;
+            }
+            catch (Exception ex)
+            {
+                modeloRpta.bEstado = false;
+                modeloRpta.iCodigo = sCodErrorControllerAPi;
+                modeloRpta.sRpta = String.Format("Class: {0} > StackTrace: {1} - Message: {2} ", "BolsaController", ex.StackTrace, ex.Message);// ex.Message.ToString();
+                modeloRpta.obj = obj;
+                objResult = modeloRpta;
+
+                // JsonConvert
+            }
+
+            return JsonConvert.SerializeObject(objResult);
+        }
+
+        // POST: api/Bolsa
+        [HttpPost]
+        public object mListarTodoN(string strNemotico, Nemonico Nemonico_)
+        {
+            object objResult = null;
+
+            Model modeloRpta = new Model();
+            Bolsa mBolsa = new Bolsa();
+
+            object obj = new object();
+
+            try
+            {
+                object objRpta = mBolsa.mListarTodoN(this.ConfigWeb_, strNemotico, Nemonico_);
+                modeloRpta = (Model)objRpta;
+
+                objResult = modeloRpta;
+            }
+            catch (Exception ex)
+            {
+                modeloRpta.bEstado = false;
+                modeloRpta.iCodigo = sCodErrorControllerAPi;
+                modeloRpta.sRpta = String.Format("Class: {0} > StackTrace: {1} - Message: {2} ", "BolsaController", ex.StackTrace, ex.Message);// ex.Message.ToString();
+                modeloRpta.obj = obj;
+                objResult = modeloRpta;
+
+                // JsonConvert
+            }
+
+            return JsonConvert.SerializeObject(objResult);
+        }
+
+        // POST: api/Bolsa
+        [HttpPost]
+        public object mInsertarN(string strNemotico, Nemonico Nemonico_)
+        {
+            object objResult = null;
+
+            Model modeloRpta = new Model();
+            Bolsa mBolsa = new Bolsa();
+
+            object obj = new object();
+
+            try
+            {
+                object objRpta = mBolsa.mInsertarN(this.ConfigWeb_, Nemonico_);
+                modeloRpta = (Model)objRpta;
+
+                objResult = modeloRpta;
+            }
+            catch (Exception ex)
+            {
+                modeloRpta.bEstado = false;
+                modeloRpta.iCodigo = sCodErrorControllerAPi;
+                modeloRpta.sRpta = String.Format("Class: {0} > StackTrace: {1} - Message: {2} ", "BolsaController", ex.StackTrace, ex.Message);// ex.Message.ToString();
+                modeloRpta.obj = obj;
+                objResult = modeloRpta;
+
+                // JsonConvert
+            }
+
+            return JsonConvert.SerializeObject(objResult);
+        }
+
+        [HttpGet]
+        [Route("mEliminarTodoN")]
+        public object mEliminarTodoN()
+        {
+            object objResult = null;
+
+            Model modeloRpta = new Model();
+            Bolsa mBolsa = new Bolsa();
+
+            object obj = new object();
+
+            try
+            {
+                object objRpta = mBolsa.mEliminarTodoN(this.ConfigWeb_);
+                modeloRpta = (Model)objRpta;
+
+                objResult = modeloRpta;
+            }
+            catch (Exception ex)
+            {
+                modeloRpta.bEstado = false;
+                modeloRpta.iCodigo = sCodErrorControllerAPi;
+                modeloRpta.sRpta = String.Format("Class: {0} > StackTrace: {1} - Message: {2} ", "BolsaController", ex.StackTrace, ex.Message);// ex.Message.ToString();
+                modeloRpta.obj = obj;
+                objResult = modeloRpta;
+
+                // JsonConvert
+            }
+
+            return JsonConvert.SerializeObject(objResult);
+        }
+
+        [HttpGet]
+        [Route("mTipoRentaN/{strNemonico}")]
+        public object mTipoRentaN(string strNemonico)
+        {
+            object objResult = null;
+
+            Model modeloRpta = new Model();
+            Bolsa mBolsa = new Bolsa();
+
+            object obj = new object();
+
+            try
+            {
+                object objRpta = mBolsa.mTipoRentaN(this.ConfigWeb_, strNemonico);
+                modeloRpta = (Model)objRpta;
+
+                objResult = modeloRpta;
+            }
+            catch (Exception ex)
+            {
+                modeloRpta.bEstado = false;
+                modeloRpta.iCodigo = sCodErrorControllerAPi;
+                modeloRpta.sRpta = String.Format("Class: {0} > StackTrace: {1} - Message: {2} ", "BolsaController", ex.StackTrace, ex.Message);// ex.Message.ToString();
+                modeloRpta.obj = obj;
+                objResult = modeloRpta;
+
+                // JsonConvert
+            }
+
+            return JsonConvert.SerializeObject(objResult);
+        }
+        #endregion
+
+        #region CorreoDA
+
+        [HttpGet]
+        [Route("mSeleccionarCorreo/{intCodigoCorreo}")]
+        public object mSeleccionarCorreo(int intCodigoCorreo)
+        {
+            object objResult = null;
+
+            Model modeloRpta = new Model();
+            Bolsa mBolsa = new Bolsa();
+
+            object obj = new object();
+
+            try
+            {
+                object objRpta = mBolsa.mSeleccionarCorreo(this.ConfigWeb_, intCodigoCorreo);
+                modeloRpta = (Model)objRpta;
+
+                objResult = modeloRpta;
+            }
+            catch (Exception ex)
+            {
+                modeloRpta.bEstado = false;
+                modeloRpta.iCodigo = sCodErrorControllerAPi;
+                modeloRpta.sRpta = String.Format("Class: {0} > StackTrace: {1} - Message: {2} ", "BolsaController", ex.StackTrace, ex.Message);// ex.Message.ToString();
+                modeloRpta.obj = obj;
+                objResult = modeloRpta;
+
+                // JsonConvert
+            }
+
+            return JsonConvert.SerializeObject(objResult);
+        }
 
         [HttpGet]
         [Route("mTraerCorreo")]
@@ -331,8 +654,262 @@ namespace WebApi.Controllers
             return JsonConvert.SerializeObject(objResult);
         }
 
+        [HttpGet]
+        [Route("mListarParaAsignaciones/{Fecha}, {TipoOperacion} , {Valor}, {Referencia}")]
+        public object mListarParaAsignaciones(DateTime Fecha, string TipoOperacion, string Valor, string Referencia)
+        {
+            object objResult = null;
 
+            Model modeloRpta = new Model();
+            Bolsa mBolsa = new Bolsa();
 
+            object obj = new object();
+
+            try
+            {
+                object objRpta = mBolsa.mListarParaAsignaciones(this.ConfigWeb_, Fecha, TipoOperacion, Valor, Referencia);
+                modeloRpta = (Model)objRpta;
+
+                objResult = modeloRpta;
+            }
+            catch (Exception ex)
+            {
+                modeloRpta.bEstado = false;
+                modeloRpta.iCodigo = sCodErrorControllerAPi;
+                modeloRpta.sRpta = String.Format("Class: {0} > StackTrace: {1} - Message: {2} ", "BolsaController", ex.StackTrace, ex.Message);// ex.Message.ToString();
+                modeloRpta.obj = obj;
+                objResult = modeloRpta;
+
+                // JsonConvert
+            }
+
+            return JsonConvert.SerializeObject(objResult);
+        }
+
+        // POST: api/Bolsa
+        [HttpPost]
+        public object mOperacionesNoEnviadas([FromBody] bool booOrdenes, OperacionesDia OperacionesDia_)
+        {
+            object objResult = null;
+
+            Model modeloRpta = new Model();
+            Bolsa mBolsa = new Bolsa();
+
+            object obj = new object();
+
+            try
+            {
+                object objRpta = mBolsa.mOperacionesNoEnviadas(this.ConfigWeb_,booOrdenes, OperacionesDia_);
+                modeloRpta = (Model)objRpta;
+
+                objResult = modeloRpta;
+            }
+            catch (Exception ex)
+            {
+                modeloRpta.bEstado = false;
+                modeloRpta.iCodigo = sCodErrorControllerAPi;
+                modeloRpta.sRpta = String.Format("Class: {0} > StackTrace: {1} - Message: {2} ", "BolsaController", ex.StackTrace, ex.Message);// ex.Message.ToString();
+                modeloRpta.obj = obj;
+                objResult = modeloRpta;
+
+                // JsonConvert
+            }
+
+            return JsonConvert.SerializeObject(objResult);
+        }
+        #endregion
+
+        #region PolizaDelDiaDA
+        [HttpPost]
+        public object mPolizaDiaInsertar([FromBody] PolizaDia PolizaDia_)
+        {
+            object objResult = null;
+
+            Model modeloRpta = new Model();
+            Bolsa mBolsa = new Bolsa();
+
+            object obj = new object();
+
+            try
+            {
+                object objRpta = mBolsa.mPolizaDiaInsertar(this.ConfigWeb_, PolizaDia_);
+                modeloRpta = (Model)objRpta;
+
+                objResult = modeloRpta;
+            }
+            catch (Exception ex)
+            {
+                modeloRpta.bEstado = false;
+                modeloRpta.iCodigo = sCodErrorControllerAPi;
+                modeloRpta.sRpta = String.Format("Class: {0} > StackTrace: {1} - Message: {2} ", "BolsaController", ex.StackTrace, ex.Message);// ex.Message.ToString();
+                modeloRpta.obj = obj;
+                objResult = modeloRpta;
+
+                // JsonConvert
+            }
+
+            return JsonConvert.SerializeObject(objResult);
+        }
+
+        [HttpPost]
+        public object mPolizasDiaNoEnviadas([FromBody] PolizaDia PolizaDia_)
+        {
+            object objResult = null;
+
+            Model modeloRpta = new Model();
+            Bolsa mBolsa = new Bolsa();
+
+            object obj = new object();
+
+            try
+            {
+                object objRpta = mBolsa.mPolizasDiaNoEnviadas(this.ConfigWeb_, PolizaDia_);
+                modeloRpta = (Model)objRpta;
+
+                objResult = modeloRpta;
+            }
+            catch (Exception ex)
+            {
+                modeloRpta.bEstado = false;
+                modeloRpta.iCodigo = sCodErrorControllerAPi;
+                modeloRpta.sRpta = String.Format("Class: {0} > StackTrace: {1} - Message: {2} ", "BolsaController", ex.StackTrace, ex.Message);// ex.Message.ToString();
+                modeloRpta.obj = obj;
+                objResult = modeloRpta;
+
+                // JsonConvert
+            }
+
+            return JsonConvert.SerializeObject(objResult);
+        }
+
+        [HttpGet]
+        [Route("mModificarEstadoEnvioPD/{strCodigoPolizaDia}, {booEnvioExitoso}, {strDescripcion}")]
+        public object mModificarEstadoEnvioPD(string strCodigoPolizaDia, bool booEnvioExitoso, string strDescripcion)
+        {
+            object objResult = null;
+
+            Model modeloRpta = new Model();
+            Bolsa mBolsa = new Bolsa();
+
+            object obj = new object();
+
+            try
+            {
+                object objRpta = mBolsa.mModificarEstadoEnvioPD(this.ConfigWeb_, strCodigoPolizaDia, booEnvioExitoso, strDescripcion);
+                modeloRpta = (Model)objRpta;
+
+                objResult = modeloRpta;
+            }
+            catch (Exception ex)
+            {
+                modeloRpta.bEstado = false;
+                modeloRpta.iCodigo = sCodErrorControllerAPi;
+                modeloRpta.sRpta = String.Format("Class: {0} > StackTrace: {1} - Message: {2} ", "BolsaController", ex.StackTrace, ex.Message);// ex.Message.ToString();
+                modeloRpta.obj = obj;
+                objResult = modeloRpta;
+
+                // JsonConvert
+            }
+        }
+        #endregion
+
+        #region OperacionesDelDiaDA
+        // POST: api/Bolsa
+        [HttpPost]
+        public object mInsertarOD([FromBody] OperacionesDia operacionesDia_)
+        {
+            object objResult = null;
+
+            Model modeloRpta = new Model();
+            Bolsa mBolsa = new Bolsa();
+
+            object obj = new object();
+
+            try
+            {
+                object objRpta = mBolsa.mInsertarOD(this.ConfigWeb_, operacionesDia_);
+                modeloRpta = (Model)objRpta;
+
+                objResult = modeloRpta;
+            }
+            catch (Exception ex)
+            {
+                modeloRpta.bEstado = false;
+                modeloRpta.iCodigo = sCodErrorControllerAPi;
+                modeloRpta.sRpta = String.Format("Class: {0} > StackTrace: {1} - Message: {2} ", "BolsaController", ex.StackTrace, ex.Message);// ex.Message.ToString();
+                modeloRpta.obj = obj;
+                objResult = modeloRpta;
+
+                // JsonConvert
+            }
+
+            return JsonConvert.SerializeObject(objResult);
+        }
+
+        [HttpGet]
+        [Route("mModificarEstadoEnvio/{strCodigoOperacion}, {booEnvioExitoso}, {strDescripcion}")]
+        public object mModificarEstadoEnvioOD(string strCodigoOperacion, bool booEnvioExitoso, string strDescripcion)
+        {
+            object objResult = null;
+
+            Model modeloRpta = new Model();
+            Bolsa mBolsa = new Bolsa();
+
+            object obj = new object();
+
+            try
+            {
+                object objRpta = mBolsa.mModificarEstadoEnvioOD(this.ConfigWeb_, strCodigoOperacion, booEnvioExitoso, strDescripcion);
+                modeloRpta = (Model)objRpta;
+
+                objResult = modeloRpta;
+            }
+            catch (Exception ex)
+            {
+                modeloRpta.bEstado = false;
+                modeloRpta.iCodigo = sCodErrorControllerAPi;
+                modeloRpta.sRpta = String.Format("Class: {0} > StackTrace: {1} - Message: {2} ", "BolsaController", ex.StackTrace, ex.Message);// ex.Message.ToString();
+                modeloRpta.obj = obj;
+                objResult = modeloRpta;
+
+                // JsonConvert
+            }
+        }
+        #endregion
+
+        #region TipoCuentaDA
+        [HttpGet]
+        [Route("mTipoCuenta, {_CodigoTipoCuenta}")]
+        public object mTipoCuenta(string _CodigoTipoCuenta)
+        {
+            object objResult = null;
+
+            Model modeloRpta = new Model();
+            Bolsa mBolsa = new Bolsa();
+
+            object obj = new object();
+
+            try
+            {
+                object objRpta = mBolsa.mTipoCuenta(this.ConfigWeb_, _CodigoTipoCuenta);
+                modeloRpta = (Model)objRpta;
+
+                objResult = modeloRpta;
+            }
+            catch (Exception ex)
+            {
+                modeloRpta.bEstado = false;
+                modeloRpta.iCodigo = sCodErrorControllerAPi;
+                modeloRpta.sRpta = String.Format("Class: {0} > StackTrace: {1} - Message: {2} ", "BolsaController", ex.StackTrace, ex.Message);// ex.Message.ToString();
+                modeloRpta.obj = obj;
+                objResult = modeloRpta;
+
+                // JsonConvert
+            }
+
+            return JsonConvert.SerializeObject(objResult);
+        }
+        #endregion
 
         //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
         //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
