@@ -44,6 +44,12 @@ namespace WebApi.Models
         }
 
 
+        public Model mListaFiltroRentaFija(ConfigWeb ConfigWeb_, string sTipoRenta, string sNemonico)
+        {
+            return new Logic_().mListaFiltroRentaFija(ConfigWeb_, sTipoRenta, sNemonico);
+        }
+
+
 
     }
 }

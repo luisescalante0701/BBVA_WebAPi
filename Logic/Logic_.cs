@@ -152,5 +152,26 @@ namespace Logic
         }
 
 
+        public Model mListaFiltroRentaFija(ConfigWeb ConfigWeb_, string sTipoRenta, string sNemonico)
+        {
+            Model modeloRpta = new Model();
+
+            try
+            {
+                string sCMD = "EXEC [SAB_Nemonico_Listar] '" + sTipoRenta + "','" + sNemonico + "' ";
+                modeloRpta = new Data_().mExceBD_SQL(ConfigWeb_, sCMD);
+            }
+            catch (Exception ex)
+            {
+                modeloRpta.bEstado = false;
+                modeloRpta.iCodigo = sCodErrorLogicAPi;
+                modeloRpta.sRpta = String.Format("Class: {0} > StackTrace: {1} - Message: {2} ", "Logic_", ex.StackTrace, ex.Message);
+                modeloRpta.obj = null;
+            }
+
+            return modeloRpta;
+        }
+
+
     }
 }

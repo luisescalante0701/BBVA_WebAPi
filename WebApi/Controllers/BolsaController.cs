@@ -267,6 +267,37 @@ namespace WebApi.Controllers
 
 
 
+        [HttpGet]
+        [Route("mListaFiltroRentaFija/{sTipoRenta}/{sNemonico}")]
+        public object mListaFiltroRentaFija(string sTipoRenta, string sNemonico)
+        {
+            object objResult = null;
+
+            Model modeloRpta = new Model();
+           // Bolsa mBolsa = new Bolsa();
+
+            object obj = new object();
+
+            try
+            {
+                object objRpta = new Bolsa().mListaFiltroRentaFija(this.ConfigWeb_, sTipoRenta,  sNemonico);
+                modeloRpta = (Model)objRpta;
+
+                objResult = modeloRpta;
+            }
+            catch (Exception ex)
+            {
+                modeloRpta.bEstado = false;
+                modeloRpta.iCodigo = sCodErrorControllerAPi;
+                modeloRpta.sRpta = String.Format("Class: {0} > StackTrace: {1} - Message: {2} ", "BolsaController", ex.StackTrace, ex.Message);// ex.Message.ToString();
+                modeloRpta.obj = obj;
+                objResult = modeloRpta;
+
+                // JsonConvert
+            }
+
+            return JsonConvert.SerializeObject(objResult);
+        }
 
 
 
